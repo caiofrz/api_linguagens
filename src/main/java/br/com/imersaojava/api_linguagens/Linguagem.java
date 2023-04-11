@@ -33,4 +33,8 @@ public class Linguagem {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
