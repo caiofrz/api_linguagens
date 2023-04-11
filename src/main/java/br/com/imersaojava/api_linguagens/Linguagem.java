@@ -1,6 +1,13 @@
 package br.com.imersaojava.api_linguagens;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "linguagens")
 public class Linguagem {
+
+    @Id
+    private String id;
 
     private String title;
     private String image;
@@ -20,6 +27,10 @@ public class Linguagem {
     }
     public int getRanking() {
         return ranking;
+    }
+
+    public String getId() {
+        return id;
     }
 
 }

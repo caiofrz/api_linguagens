@@ -2,29 +2,32 @@ package br.com.imersaojava.api_linguagens;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class LinguagemController {
 
-    private List<Linguagem> linguagens = 
-            List.of(
-                new Linguagem("Java", 
-                    "https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/java/java_256x256.png", 
-                    1),
-                new Linguagem("PHP", 
-                    "https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/php/php_256x256.png",
-                    2)
-            );
-    
-    @GetMapping(value="/")
+    @Autowired
+    private LinguagemRepository repositorio;
+
+    @GetMapping(value = "/")
     public String hellowWorld() {
         return "Hello, World";
     }
 
-    @GetMapping(value="/linguagens")
+    @GetMapping(value = "/linguagens")
     public List<Linguagem> getLinguagens() {
+        List<Linguagem> linguagens = repositorio.findAll();
         return linguagens;
+    }
+
+    @PostMapping(value = "/linguagens")
+    public Linguagem cadastrarLinguagem(@RequestBody Linguagem linguagem) {
+        var linguagemSalva = repositorio.save(linguagem);
+        return linguagemSalva;
     }
 }
