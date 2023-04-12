@@ -1,5 +1,6 @@
 package br.com.imersaojava.api_linguagens;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class LinguagemController {
     @GetMapping(value = "/linguagens")
     public List<Linguagem> getLinguagens() {
         List<Linguagem> linguagens = repositorio.findAll();
+        linguagens.sort(Comparator.comparing(Linguagem::getRanking));
+
         return linguagens;
     }
 
@@ -55,4 +58,5 @@ public class LinguagemController {
     public void excluirLinguagem(@PathVariable String id) {
         repositorio.deleteById(id);
     }
+
 }
