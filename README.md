@@ -101,3 +101,7 @@ Se você tiver algum feedback, por favor não deixe de dá-lo.
 
 Me contate através do [github](https://github.com/caiofrz) 
 ou [LinkedIn](https://www.linkedin.com/in/caio-ferraz-almeida/) 
+
+## Apêndice
+
+Juntando este projeto com o meu repositório [working_API](https://github.com/caiofrz/working_API), você conseguirá obter stickers para mandar para os amigos devs no whatsapp.
